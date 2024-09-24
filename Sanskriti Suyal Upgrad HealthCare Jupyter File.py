@@ -232,6 +232,76 @@ plt.title('Correlation Matrix of Continuous Variables')
 plt.show()
 
 
+# In[14]:
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+data = pd.read_csv('heart_health.csv')
+
+categorical_vars = ['Smoker', 'PhysActivity', 'Fruits', 'Veggies']
+
+
+for var in categorical_vars:
+    plt.figure(figsize=(6, 4))
+    sns.countplot(x=var, data=data, palette="Set2")
+    plt.title(f'Distribution of {var}')
+    plt.ylabel('Count')
+    plt.xlabel(var)
+    plt.show()
+
+
+# In[16]:
+
+
+for var in categorical_vars:
+    plt.figure(figsize=(6, 6))
+    data[var].value_counts().plot.pie(autopct='%1.1f%%', colors=sns.color_palette("Set2"))
+    plt.title(f'Distribution of {var}')
+    plt.ylabel('')  
+    plt.show()
+
+
+# In[20]:
+
+
+for var in categorical_vars:
+    plt.figure(figsize=(6, 4))
+    sns.countplot(x=var, hue=def stacked_bar_chart(df, var, target):
+    crosstab = pd.crosstab(df[var], df[target], normalize='index')
+    crosstab.plot(kind='bar', stacked=True, color=['#FF9999', '#66B2FF'], figsize=(6, 4))
+    plt.title(f'Heart Disease Prevalence Across {var}')
+    plt.ylabel('Proportion')
+    plt.xlabel(var)
+    plt.legend(title=target)
+    plt.show()
+
+
+# In[28]:
+
+
+def stacked_bar_chart(data, var, target):
+    crosstab = pd.crosstab(data[var], data[target], normalize='index')
+    crosstab.plot(kind='bar', stacked=True, color=['#FF9999', '#66B2FF'], figsize=(6, 4))
+    plt.title(f'Heart Disease Prevalence Across {var}')
+    plt.ylabel('Proportion')
+    plt.xlabel(var)
+    plt.legend(title=target)
+    plt.show()
+
+# Generate stacked bar charts for categorical variables
+for var in categorical_vars:
+ stacked_bar_chart(data, var, 'HeartDiseaseorAttack')
+
+
+# In[ ]:
+
+
+
+
+
 # In[ ]:
 
 
